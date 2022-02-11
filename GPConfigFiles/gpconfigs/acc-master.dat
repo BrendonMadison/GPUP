@@ -1,0 +1,22 @@
+$ACCELERATOR:: SETA_250GeV
+{trav_focus=0;espread.1=0.0;espread.2=0.0;
+energy=125;particles=2;beta_x=13;beta_y=0.41;
+emitt_x=5.0;emitt_y=0.035;sigma_x=729;sigma_y=7.7;sigma_z=300;
+offset_y=0.0;offset_x=00.0;waist_x=0000;waist_y=250;f_rep=1.0;n_b=1;
+espread.1=0.0; espread.2=0.0; which_espread=3;
+charge_sign=-1;scale_step=1.0;angle_y=0.0000;angle_phi=-00.00000;}
+
+$PARAMETERS:: par
+{n_x=16*4;n_y=16*4;n_z=64;n_t=10;n_m=80000;cut_x=4*sigma_x.1;
+cut_y=6*sigma_y.1+6*0;cut_z=3*sigma_z.1;ecm_min=0.98*125;
+hist_ee_bins=50;hist_ee_min=405;hist_ee_max=505;
+track_pairs=1;store_pairs=1;do_coherent=1;do_compt=1;compt_emax=1.1*125;
+grids=7;beam_size=1;rndm_seed=SEEDSTR;rndm_load=0;rndm_save=0;
+force_symmetric=0;integration_method=2 ;do_eloss=BEAMSTR;electron_ratio=1.0;
+do_pairs=1;pair_ratio=1.0;pair_ecut = 0.0005;pair_q2=2;
+do_photons=1;store_photons=1;photon_ratio=0.1;
+do_hadrons=1;store_hadrons=1;hadron_ratio=10000;do_lumi=7;
+num_lumi=500000;num_lumi_eg=500000;num_lumi_gg=500000;
+lumi_p=1e-29;lumi_p_eg=1e-29;lumi_p_gg=1e-29;
+do_jets=1;store_jets=1;jet_ratio=10000;do_isr=0;do_espread=0;
+load_beam=3;do_dump=0;dump_step=1;dump_particle=1;electron_ratio=0.1;store_beam=1;}
