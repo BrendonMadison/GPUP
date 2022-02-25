@@ -6,7 +6,7 @@ Allows for:
 1.) Multivariate normal initial states for electron and positron beams (.C file)  
 2.) Turning on and off beamstrahlung  
 3.) Compiling multiple runs into one result file (.f file)  
-4.) Calculating mean and uncertainties of the results with a latex table output (.py file)  
+4.) Calculating mean and uncertainties of the results with a latex table output (.py file though the .tex file misprints some characters...)  
 5.) Calculate p-values of run statistics when compared to a "vanilla" run (Run 5060)  
 6.) Shell script to automatically submit analysis job after GuineaPig jobs are done. Thus is entirely automatic.  
   
