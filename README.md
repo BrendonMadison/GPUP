@@ -13,3 +13,9 @@ Allows for:
 Designed to run on KU's HPC (slurm and linux based).  
   
 Requires ROOT v6 , Python v3, GuineaPig, GNU Fortran 8.3.0
+  
+  
+Some code derived (or used with approval) from Graham Wilson's code at:
+  
+https://github.com/grahamwwilson/beamstats  
+https://github.com/grahamwwilson/SmallSamples  
