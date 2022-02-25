@@ -7,6 +7,12 @@
 *
 *                Graham W. Wilson,    18-DEC-2021
 *
+* Updated to work automatically on KU HPC,
+* as well as compute additional statistics (sqrts , Ediff)
+* and output values to a csv file
+*
+*                Brendon C. Madison,    16-FEB-2022
+*
       implicit none
 
       logical lexist
@@ -15,7 +21,7 @@
       integer N
       include 'arraysize.inc'
       integer npar
-      parameter (npar=17)
+      parameter (npar=19)
       double precision X(npar,N)
       double precision xm(npar),xr(npar)
       double precision xmean,xrms,ebeam
@@ -25,13 +31,13 @@
       integer nread
       integer iev
       
-      double precision x1,x2,xpv,ypv,zpv,x1p,y1p,x2p,y2p
+      double precision x1,x2,xpv,ypv,zpv,x1p,y1p,x2p,y2p,xsqrts,xdiff
       integer itime,sx1,sy1,sz1,sx2,sy2,sz2,iorder
       character*100 fname
       character*100 tfname
       character*100 fcorr
       character*100 lfile
-      character*2000 wline,tline
+      character*3000 wline,tline
 
 
 * Read in the arguments. Particularly beam energy should be argument 1
@@ -142,7 +148,7 @@
       wline = ''
       
       do j=1,npar
-        if(j.le.10.or.j.eq.npar)then 
+        if(j.le.6.or.j.ge.npar-1)then 
            call meanandrms(nevents,x,j,xmean,xrms,fname)
         endif
         xm(j) = xmean
@@ -172,11 +178,12 @@
            wline = trim(wline)//trim(tline)
          enddo
       close(51,status='delete')
-
+*write the mean information to the correct output file
       open(31,file=trim(fname)//'m.csv',status="old",position="append")
-        write(31,'(a,a,I10)') trim(wline),"Nev",nevents
+        write(31,'(a,a,a,I10)') trim(wline),"Nev",',',nevents
       close(31)
 
+*delete the tmp file and then make a new version of it for the correlations
       open(unit=51,iostat=j,file=trim(fname)//'tmp.csv', status='old')
       if(j == 0)close(51, status='delete')
       open(unit=51,file=trim(fname)//'tmp.csv',status="new")
@@ -184,8 +191,10 @@
 
       do i1=1,10
          do i2=i1+1,npar
-            if(i2.lt.11.or.i2.eq.17)then
-               call correlations(nevents,x,i1,i2,xm,xr,fname)
+            if(i2.lt.7.or.i2.ge.18)then
+                 if(i1.lt.7.or.i1.ge.18)then
+                    call correlations(nevents,x,i1,i2,xm,xr,fname)
+                 endif
             endif
          enddo
       enddo
@@ -218,7 +227,7 @@
       integer N
       include 'arraysize.inc'
       integer npar
-      parameter (npar=17)
+      parameter (npar=19)
       double precision X(npar,N)      
       
       double precision x1,x2,xpv,ypv,zpv,x1p,y1p,x2p,y2p
@@ -241,6 +250,8 @@
       X(15,i) = dble(sy2)      
       X(16,i) = dble(sz2)
       X(17,i) = dble(iorder)
+      X(18,i) = sqrt(x1*x2)
+      X(19,i) = x1 - x2
       
       end
       
@@ -251,7 +262,7 @@
       include 'arraysize.inc'
 
       integer npar
-      parameter (npar=17)            
+      parameter (npar=19)            
       double precision X(npar,N)
       
       integer i,j,nevents,nlines
@@ -276,13 +287,15 @@
      +             'sx2      ',
      +             'sy2      ',
      +             'sz2      ',
-     +             'order    '/
+     +             'order    ',
+     +             'sqrts    ',
+     +             'Ediff    '/
        
       print *,' '    
       print *,'Statistics for ',cvalues(j)
       
       xsum = 0.0d0
-      xxsum = 0.0d0
+      xxsum = 0.0d0 
       xmin =  1.0d10
       xmax = -1.0d10
       
@@ -303,14 +316,14 @@
 * Extrema values (both absolute and in normalized deviations)
       print *,'xmin     ',xmin,'    ',(xmin-xsum)/sx
       print *,'xmax     ',xmax,'    ',(xmax-xsum)/sx
-      if(j.le.2.or.j.eq.6)then
+      if(j.le.2.or.j.eq.9)then
          print *,'Rms/Mean ',sx/xsum
       endif
       
       nlines = 0
 
       open(51,file=TRIM(fn)//'tmp.csv',status="old",position='append')
-       write(51,'(a,a,1d16.6,a)',advance="no") cvalues(j),',',xsum,','
+       write(51,'(a,a,1e16.6,a)',advance="no") cvalues(j),',',xsum,','
 *         write(31,'(d10.4,a,d10.4,a)',advance="no") xsum,',',sx,','         
 *         write(31,'(d10.4,a,d10.4,a)',advance="no") sx,',',xmin,','
 *         write(31,'(d10.4,a)',advance="no") xmax,','
@@ -328,7 +341,7 @@
       include 'arraysize.inc'
       
       integer npar
-      parameter (npar=17)            
+      parameter (npar=19)            
       double precision X(npar,N)      
       
       double precision xm(6),xr(6)
@@ -353,7 +366,9 @@
      +             'sx2      ',
      +             'sy2      ',
      +             'sz2      ',
-     +             'order    '/      
+     +             'order    ',
+     +             'sqrts    ',
+     +             'Ediff    '/
      
       print *,' '
       
@@ -384,7 +399,7 @@
       
       open(51,file=trim(fn)//'tmp.csv',status="old",position="append")
          write(51,'(a,a,a)',advance='no') cvalues(i),',',cvalues(j)
-         write(51,'(a,1d10.4,a)',advance='no') ',',rho,','
+         write(51,'(a,1e10.4,a)',advance='no') ',',rho,','
       close(51)
       
       end

@@ -1,0 +1,121 @@
+Latex row code
+For reference, pvalues are the permutation test p-value and Welch t-test p-value
+Format follows the following. For means table:
+egin{tabular}{|ccccccccccll}
+
+ \hline 
+\multicolumn{10}{|c|}{Guinea Pig Means Table}
+\multicolumn{1}{|c|}{Run \#} &
+\multicolumn{1}{|c|}{Input Energy} &
+\multicolumn{1}{|c|}{$E_1$ Corr,$E_2$ Corr} &
+\multicolumn{1}{|c|}{Average $rac{E_1}{E_b}$} &
+\multicolumn{1}{|c|}{Average $rac{E_2}{E_b}$} &
+\multicolumn{1}{|c|}{$z_{pv}$ (um)} &
+\multicolumn{1}{|c|}{Time} &
+\multicolumn{1}{|c|}{$rac{\sqrt{s}}{\sqrt{s}_b}$} &
+\multicolumn{1}{|c|}{$rac{E_1-E_2}{E_b}$} &
+\multicolumn{1}{|c|}{\# of Events} & \ \hline
+For means p-value table:
+egin{tabular}{|ccccccccll}
+
+ \hline 
+^-values} &
+\multicolumn{1}{|c|}{$^Lrac{E_2}{E_b}$ p-values} &
+\multicolumn{1}{|c|}{$z_{pv}$ p-values} &
+\multicolumn{1}{|c|}{Time p-values} &
+\multicolumn{1}{|c|}{$^Lrac{\sqrt{s}}{\sqrt{s}_b}$ p-values} &
+\multicolumn{1}{|c|}{$^Lrac{E_1-E_2}{E_b}$ p-values} &
+\multicolumn{1}{|c|}{\# of Events p-values} & \ \hline\multicolumn{8}{|c|}{Guinea Pig Means p-values Table}
+\multicolumn{1}{|c|}{Run \# 1, Run \# 2} &
+\multicolumn{1}{|c|}{$rac{E_1}{E_b}$ p-values} &
+\multicolumn{1}{|c|}{$rac{E_2}{E_b}$ p-values} &
+\multicolumn{1}{|c|}{$z_{pv}$ p-values} &
+\multicolumn{1}{|c|}{Time p-values} &
+\multicolumn{1}{|c|}{$rac{\sqrt{s}}{\sqrt{s}_b}$ p-values} &
+\multicolumn{1}{|c|}{$rac{E_1-E_2}{E_b}$ p-values} &
+\multicolumn{1}{|c|}{\# of Events p-values} & \ \hline
+For correlations table:
+egin{tabular}{|cccccccll}
+
+ \hline 
+\multicolumn{7}{|c|}{Guinea Pig Correlations Table}
+\multicolumn{1}{|c|}{Run \#} &
+\multicolumn{1}{|c|}{$E_1 E_2$ Corr.} &
+\multicolumn{1}{|c|}{$E_1 z_{pv}$ Corr.} &
+\multicolumn{1}{|c|}{$E_2 z_{pv}$ Corr.} &
+\multicolumn{1}{|c|}{$E_1$ $\sqrt{s}$ Corr.} &
+\multicolumn{1}{|c|}{$E_2$ $\sqrt{s}$ Corr.} &
+\multicolumn{1}{|c|}{$E_1 - E_2$ $z_{pv}$ Corr.}  \ \hline
+For correlations p-value table:
+egin{tabular}{|cccccccll}
+
+ \hline 
+\multicolumn{7}{|c|}{Guinea Pig Correlations p-values Table}
+\multicolumn{1}{|c|}{Run \# 1, Run \# 2} &
+\multicolumn{1}{|c|}{$E_1 E_2$ Corr. p-values} &
+\multicolumn{1}{|c|}{$E_1 z_{pv}$ Corr. p-values} &
+\multicolumn{1}{|c|}{$E_2 z_{pv}$ Corr. p-values} &
+\multicolumn{1}{|c|}{$E_1$ $\sqrt{s}$ Corr. p-values} &
+\multicolumn{1}{|c|}{$E_2$ $\sqrt{s}$ Corr. p-values} &
+\multicolumn{1}{|c|}{$E_1 - E_2$ $z_{pv}$ Corr. p-values}  \ \hline
+
+Means table below
+
+\multicolumn{1}{|c|}{5060}         &
+\multicolumn{1}{|c|}{125.0}          &
+\multicolumn{1}{|c|}{0.0,0.0}        &
+\multicolumn{1}{|c|}{9.8877e-01$\pm$2.47e-05}     &
+\multicolumn{1}{|c|}{9.8873e-01$\pm$3.81e-05}     &
+\multicolumn{1}{|c|}{1.5720e-01$\pm$1.40e-01}     &
+\multicolumn{1}{|c|}{1.9952e+04$\pm$5.03e+00}     &
+\multicolumn{1}{|c|}{9.8855e-01$\pm$2.26e-05}     &
+\multicolumn{1}{|c|}{3.4991e-05$\pm$4.68e-05}     &
+\multicolumn{1}{|c|}{1.8341e+05$\pm$1.77e+02}     \ \hline 
+
+Means p-value table below
+\multicolumn{1}{|c|}{5060,../GPRuns/Run6060} &
+\multicolumn{1}{|c|}{2.4293e-01,2.4731e-01} &\multicolumn{1}{|c|}{5060}         &
+\multicolumn{1}{|c|}{125.0}          &
+\multicolumn{1}{|c|}{0.0,0.0}        &
+\multicolumn{1}{|c|}{9.8877e-01$\pm$2.47e-05}     &
+\multicolumn{1}{|c|}{9.8873e-01$\pm$3.81e-05}     &
+\multicolumn{1}{|c|}{1.5720e-01$\pm$1.40e-01}     &
+\multicolumn{1}{|c|}{1.9952e+04$\pm$5.03e+00}     &
+\multicolumn{1}{|c|}{9.8855e-01$\pm$2.26e-05}     &
+\multicolumn{1}{|c|}{3.4991e-05$\pm$4.68e-05}     &
+\multicolumn{1}{|c|}{1.8341e+05$\pm$1.77e+02}     \ \hline
+\multicolumn{1}{|c|}{1.6614e-01,1.6481e-01} &
+\multicolumn{1}{|c|}{4.6995e-01,4.7374e-01} &
+\multicolumn{1}{|c|}{9.0746e-01,9.0588e-01} &
+\multicolumn{1}{|c|}{6.9921e-01,6.9882e-01} &
+\multicolumn{1}{|c|}{1.1934e-01,1.2308e-01} &
+\multicolumn{1}{|c|}{8.2985e-01,8.3074e-01} & \ \hline
+\multicolumn{1}{|c|}{5060,../GPRuns/Run6060} &
+\multicolumn{1}{|c|}{2.4293e-01,2.4731e-01} &
+\multicolumn{1}{|c|}{1.6614e-01,1.6481e-01} &
+\multicolumn{1}{|c|}{4.6995e-01,4.7374e-01} &
+\multicolumn{1}{|c|}{9.0746e-01,9.0588e-01} &
+\multicolumn{1}{|c|}{6.9921e-01,6.9882e-01} &
+\multicolumn{1}{|c|}{1.1934e-01,1.2308e-01} &
+\multicolumn{1}{|c|}{8.2985e-01,8.3074e-01} & \ \hline 
+
+Correlations table below
+
+\multicolumn{1}{|c|}{5060}         &
+\multicolumn{1}{|c|}{7.8942e-02$\pm$5.27e-04}     &
+\multicolumn{1}{|c|}{-1.1266e-01$\pm$5.38e-04}     &
+\multicolumn{1}{|c|}{1.0944e-01$\pm$5.94e-04}     &
+\multicolumn{1}{|c|}{7.3252e-01$\pm$9.89e-04}     &
+\multicolumn{1}{|c|}{7.3587e-01$\pm$8.22e-04}     &
+\multicolumn{1}{|c|}{-1.6361e-01$\pm$5.71e-04}  \ \hline 
+
+Correlations p-value table below 
+
+\multicolumn{1}{|c|}{5060,../GPRuns/Run6060} &
+\multicolumn{1}{|c|}{2.9236e-01,2.9590e-01} &
+\multicolumn{1}{|c|}{6.8350e-02,7.2125e-02} &
+\multicolumn{1}{|c|}{6.0491e-02,6.0089e-02} &
+\multicolumn{1}{|c|}{1.6597e-01,1.6656e-01} &
+\multicolumn{1}{|c|}{7.0017e-02,7.2319e-02} &
+\multicolumn{1}{|c|}{8.5151e-01,8.4187e-01} & \ \hline 
+
